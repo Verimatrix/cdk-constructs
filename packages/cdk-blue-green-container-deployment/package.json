@@ -1,6 +1,6 @@
 {
   "name": "@verimatrix/cdk-blue-green-container-deployment",
-  "version": "1.46.0-rc.1",
+  "version": "1.46.0-rc.2",
   "description": "Blue green container deployment with CodeDeploy",
   "license": "MIT",
   "publishConfig": {

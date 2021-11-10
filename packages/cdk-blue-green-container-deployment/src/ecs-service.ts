@@ -146,8 +146,7 @@ export class EcsService extends Construct implements IConnectable, IEcsService {
                 enable: true,
                 rollback: props.circuitBreaker.rollback ?? false,
               }
-            : undefined,
-            PropagateTags: props.propagateTags
+            : undefined
         },
         PropagateTags: props.propagateTags
       },

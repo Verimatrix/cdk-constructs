@@ -8,6 +8,7 @@ import {
   ResourceHandler,
   ResourceHandlerReturn,
 } from 'custom-resource-helper';
+
 export interface BlueGreenServiceProps {
   cluster: string;
   serviceName: string;
@@ -24,7 +25,6 @@ export interface BlueGreenServiceProps {
   healthCheckGracePeriodSeconds: number;
   deploymentConfiguration: ECS.DeploymentConfiguration;
   propagateTags: 'SERVICE'|'TASK_DEFINITION'|string;
-  tags: ECS.Tag[]
 }
 
 const ecs = new ECS();
@@ -44,11 +44,7 @@ const getProperties = (props: CloudFormationCustomResourceEvent['ResourcePropert
   schedulingStrategy: props.SchedulingStrategy,
   healthCheckGracePeriodSeconds: props.HealthCheckGracePeriodSeconds,
   deploymentConfiguration: props.DeploymentConfiguration,
-  propagateTags: props.PropagateTags,
-  tags: Object.entries(props.tags || {}).map(([key, value]) => {
-    if(typeof value !== 'string') throw new Error(`Value for tag "${key}" is not a string.`)
-    return { key: key, value: value }
-  })
+  propagateTags: props.PropagateTags
 });
 
 const handleCreate: OnCreateHandler = async (event): Promise<ResourceHandlerReturn> => {
@@ -67,8 +63,7 @@ const handleCreate: OnCreateHandler = async (event): Promise<ResourceHandlerRetu
     schedulingStrategy,
     healthCheckGracePeriodSeconds,
     deploymentConfiguration,
-    propagateTags,
-    tags
+    propagateTags
   } = getProperties(event.ResourceProperties);
 
   const { service } = await ecs
@@ -98,8 +93,7 @@ const handleCreate: OnCreateHandler = async (event): Promise<ResourceHandlerRetu
           containerName,
         },
       ],
-      propagateTags,
-      tags
+      propagateTags
     })
     .promise();
 

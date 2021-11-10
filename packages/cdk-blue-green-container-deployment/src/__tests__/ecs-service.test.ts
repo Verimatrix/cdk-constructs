@@ -57,33 +57,4 @@ describe('EcsService', () => {
       }));
     });
   });
-
-  describe('with tags', () => {
-    const stack = new cdk.Stack(app, 'MyStackWithTags');
-    const cluster = new ecs.Cluster(stack, 'Cluster');
-    const prodTargetGroup = new elb.ApplicationTargetGroup(stack, 'ProdTargetGroup', { vpc: cluster.vpc });
-    const testTargetGroup = new elb.ApplicationTargetGroup(stack, 'TestTargetGroup', { vpc: cluster.vpc });
-    const taskDefinition = new DummyTaskDefinition(stack, 'DummyTaskDefinition', { image: 'nginx' });
-    const tags = { Foo: 'Bar', foo: 'bar' }
-
-    new EcsService(stack, 'Service', {
-      cluster,
-      serviceName: 'My Service',
-      prodTargetGroup,
-      testTargetGroup,
-      taskDefinition,
-      tags
-    });
-
-    it('enables tag propagation', () => {
-      expectCDK(stack).to(haveResource('Custom::BlueGreenService', {
-        ServiceName: 'My Service',
-        LaunchType: 'FARGATE',
-        Tags: {
-          Foo: "Bar",
-          foo: "bar"
-        }
-      }));
-    });
-  });
 });

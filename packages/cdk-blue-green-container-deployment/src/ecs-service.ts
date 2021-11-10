@@ -18,10 +18,6 @@ export enum PropagateTags {
   TASK_DEFINITION = 'TASK_DEFINITION'
 }
 
-export interface Tags {
-  [key:string]: string
-}
-
 export interface EcsServiceProps {
   readonly securityGroups?: SecurityGroup[];
   readonly cluster: ICluster;
@@ -34,7 +30,6 @@ export interface EcsServiceProps {
   readonly testTargetGroup: ITargetGroup;
   readonly taskDefinition: DummyTaskDefinition;
   readonly propagateTags?: PropagateTags;
-  readonly tags?: Tags;
 
   /**
    * The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy
@@ -153,8 +148,7 @@ export class EcsService extends Construct implements IConnectable, IEcsService {
               }
             : undefined
         },
-        PropagateTags: props.propagateTags,
-        Tags: props.tags
+        PropagateTags: props.propagateTags
       },
     });
 

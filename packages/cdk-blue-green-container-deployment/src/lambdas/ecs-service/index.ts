@@ -131,7 +131,6 @@ export const handleUpdate: OnUpdateHandler = async (event): Promise<ResourceHand
     event.ResourceProperties,
   );
 
-  console.log('props', event.ResourceProperties);
   const { service } = await ecs
     .updateService({
       service: serviceName,

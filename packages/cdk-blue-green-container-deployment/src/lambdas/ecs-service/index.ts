@@ -21,7 +21,7 @@ export interface BlueGreenServiceProps {
   taskDefinition: string;
   launchType: string;
   platformVersion: string;
-  desiredCount: number;
+  desiredCount?: number;
   subnets: string[];
   securityGroups: string[];
   targetGroupArn: string;
@@ -81,7 +81,7 @@ export const handleCreate: OnCreateHandler = async (event): Promise<ResourceHand
       taskDefinition,
       launchType,
       platformVersion,
-      desiredCount,
+      desiredCount: desiredCount || 1,
       schedulingStrategy,
       propagateTags,
       deploymentController: {
@@ -131,6 +131,7 @@ export const handleUpdate: OnUpdateHandler = async (event): Promise<ResourceHand
     event.ResourceProperties,
   );
 
+  console.log('props', event.ResourceProperties);
   const { service } = await ecs
     .updateService({
       service: serviceName,

@@ -1,6 +1,6 @@
 {
   "name": "@verimatrix-core-npm-snapshot/cdk-blue-green-container-deployment",
-  "version": "1.51.1-alpha.6",
+  "version": "1.51.1-alpha.7",
   "publishConfig": {
     "registry": "https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-snapshot/"
   },

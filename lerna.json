@@ -1,15 +1,13 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "examples/*"],
+  "packages": ["packages/cdk-blue-green-container-deployment"],
   "version": "independent",
   "command": {
     "publish": {
-      "allowBranch": ["master", "cdk2"]
+      "allowBranch": ["master", "cdk2", "deploy-cdk2-update-desired-count-behavior"],
+      "registry": "https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-snapshot/"
     }
   },
-  "ignoreChanges": [
-    "**/__fixtures__/**",
-    "**/__tests__/**"
-  ]
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**"]
 }

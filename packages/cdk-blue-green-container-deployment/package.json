@@ -1,5 +1,5 @@
 {
-  "name": "@cloudcomponents/cdk-blue-green-container-deployment",
+  "name": "@verimatrix-core-npm-snapshot/cdk-blue-green-container-deployment",
   "version": "1.51.0",
   "description": "Blue green container deployment with CodeDeploy",
   "license": "MIT",

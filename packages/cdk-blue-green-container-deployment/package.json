@@ -1,6 +1,9 @@
 {
   "name": "@verimatrix-core-npm-snapshot/cdk-blue-green-container-deployment",
   "version": "1.51.1-alpha.4",
+  "publishConfig": {
+    "registry": "https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-snapshot/"
+  },
   "description": "Blue green container deployment with CodeDeploy",
   "license": "MIT",
   "author": {

@@ -3,9 +3,11 @@
   "useWorkspaces": true,
   "packages": ["packages/cdk-blue-green-container-deployment"],
   "version": "independent",
+
   "command": {
     "publish": {
-      "allowBranch": ["master", "deploy-desired"]
+      "allowBranch": ["master", "deploy-desired"],
+      "registry": "https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-snapshot/"
     }
   },
   "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**"]

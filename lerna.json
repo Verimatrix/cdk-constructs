@@ -1,15 +1,12 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "examples/*"],
+  "packages": ["packages/cdk-blue-green-container-deployment"],
   "version": "independent",
   "command": {
     "publish": {
-      "allowBranch": "master"
+      "allowBranch": ["master", "deploy-desired"]
     }
   },
-  "ignoreChanges": [
-    "**/__fixtures__/**",
-    "**/__tests__/**"
-  ]
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**"]
 }

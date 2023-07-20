@@ -31,5 +31,4 @@ jobs:
       #- name: Anti-tamper check
       #  run: git diff --exit-code
     container:
-      image: jsii/superchain
-      tag: 1-buster-slim
+      image: jsii/superchain:1-buster-slim

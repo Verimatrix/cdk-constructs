@@ -1,11 +1,11 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "examples/*"],
+  "packages": ["packages/cdk-blue-green-container-deployment"],
   "version": "independent",
   "command": {
     "publish": {
-      "allowBranch": ["master", "cdk2"]
+      "allowBranch": ["master", "cdk2", "vmx-cdk2"]
     }
   },
   "ignoreChanges": [

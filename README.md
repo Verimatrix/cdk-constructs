@@ -9,6 +9,24 @@
 
 > A collection of higher-level reusable [cdk constructs](https://github.com/awslabs/aws-cdk)
 
+## Verimatrix Only - Publishing
+
+We're currently only utilizing the cdk-blue-green-container-deployment package (currently in LaFiducia repo) in order to deploy our services. Because of this, we've modified the package.json and lerna.json to narrow the scope only this 1 package. The diff for that can be found [here](https://github.com/Verimatrix/cdk-constructs/commit/6d0c5dcf219e1f362637e592372e05f1be66ae5b) and [here](https://github.com/Verimatrix/cdk-constructs/commit/3ddc5f1e7c5549940773a4a3f603945ec0f7d5ce). We've also changed the repository to publish to directly from this branch to `https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/`. Please follow [this guide](https://vmxeng.atlassian.net/wiki/spaces/CTA/pages/14702643580/Configure+Local+Environment+for+NPM) for setting up your local environment to publish to that JFrog Repo. 
+
+Example:
+
+```
+# ~/.npmrc
+@vmx-cloudcomponents:registry=https://verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/
+
+//verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/:username=rperez@verimatrix.com
+//verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/:email=rperez@verimatrix.com
+//verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/:_password=secret
+//verimatrix.jfrog.io/artifactory/api/npm/core-npm-release/:always-auth=true
+```
+
+Next, if you wish to publish. Simply run `yarn lerna publish` and follow the prompts.
+
 ## Constructs
 
 This repository is a monorepo managed with [Lerna](https://github.com/lerna/lerna). [Several constructs](/packages) are published to pypi and npm from the same codebase.
